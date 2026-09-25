@@ -188,6 +188,121 @@ p {
   transform: translateY(0);
 }
 
+/* Resume Specific Styles */
+.resume-page-header {
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.resume-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.resume-section:last-of-type {
+  border-bottom: none;
+}
+
+.resume-item {
+  margin-bottom: 2rem;
+}
+
+.resume-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.resume-title-group {
+  flex: 1;
+}
+
+.resume-item-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.2rem;
+}
+
+.resume-promotion {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #666666;
+}
+
+.resume-subtitle {
+  font-size: 0.95rem;
+  color: #555555;
+  font-weight: 500;
+}
+
+.resume-date {
+  font-size: 0.95rem;
+  color: #666666;
+  white-space: nowrap;
+  text-align: right;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.resume-details {
+  margin-top: 0.35rem;
+}
+
+.resume-details p {
+  margin-bottom: 0.3rem;
+  color: #444444;
+}
+
+.resume-bullets {
+  padding-left: 1.25rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0;
+}
+
+.resume-bullets li {
+  margin-bottom: 0.5rem;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.resume-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry-list {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+.resume-entry-list li {
+  margin-bottom: 0.65rem;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.resume-entry-list li:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.resume-entry-title {
+  color: #333333;
+}
+
 @media (max-width: 640px) {
   .nav-container {
     flex-direction: column;
@@ -208,5 +323,23 @@ p {
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  /* Stack dates under titles on mobile */
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .resume-date {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .resume-entry-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
   }
 }
