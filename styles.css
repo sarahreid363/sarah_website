@@ -734,6 +734,86 @@ a:hover {
   margin-top: auto;
 }
 
+/* Honors & Affiliations */
+.honors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.honor-card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 1.4rem 1.3rem;
+  transition: border-color 0.25s ease, transform 0.2s ease;
+}
+
+.honor-card:hover {
+  border-color: var(--border-card-hover);
+  transform: translateY(-2px);
+}
+
+.honor-card-featured {
+  grid-column: 1 / -1;
+  border: 2px solid var(--gold-accent);
+  background-color: var(--gold-subtle-bg);
+  padding: 2rem 1.9rem;
+}
+
+.honor-card-featured:hover {
+  border-color: var(--gold-hover);
+}
+
+.honor-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bg-color);
+  background-color: var(--gold-accent);
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.honor-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.honor-card-featured .honor-title {
+  font-size: 1.4rem;
+  color: var(--gold-accent);
+}
+
+.honor-meta {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gold-hover);
+  margin-bottom: 0.75rem;
+  max-width: 100%;
+}
+
+.honor-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  max-width: 100%;
+}
+
+.honor-card-featured .honor-desc {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -763,6 +843,10 @@ a:hover {
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 860px) {
+  .honors-grid {
+    grid-template-columns: 1fr;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.75rem;
@@ -826,6 +910,14 @@ a:hover {
 
   .profile-headshot {
     width: 180px;
+  }
+
+  .honor-card-featured {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .honor-card-featured .honor-title {
+    font-size: 1.2rem;
   }
 
   .resume-header-top {
