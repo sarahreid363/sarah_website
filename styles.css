@@ -77,8 +77,13 @@ header {
   transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--link-hover-color);
+}
+
+.nav-links a.active {
+  font-weight: 600;
 }
 
 main {
@@ -192,11 +197,66 @@ p {
 .resume-page-header {
   padding-bottom: 1.5rem;
   border-bottom: 2px solid var(--text-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.resume-name-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.resume-contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #555555;
+  margin-top: 0.5rem;
+}
+
+.resume-contact-bar a {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.resume-contact-bar a:hover {
+  text-decoration: underline;
+}
+
+.resume-contact-bar .separator {
+  color: #888888;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid #cccccc;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: #f0f0f0;
+  border-color: #999999;
 }
 
 .resume-section {
-  padding: 2.5rem 0;
+  padding: 2.25rem 0;
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -218,6 +278,7 @@ p {
   align-items: baseline;
   gap: 1.5rem;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .resume-title-group {
@@ -297,10 +358,12 @@ p {
   justify-content: space-between;
   align-items: baseline;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .resume-entry-title {
   color: #333333;
+  flex: 1;
 }
 
 @media (max-width: 640px) {
@@ -325,6 +388,17 @@ p {
     justify-content: center;
   }
 
+  .resume-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .resume-contact-bar {
+    gap: 0.35rem;
+    font-size: 0.88rem;
+  }
+
   /* Stack dates under titles on mobile */
   .resume-header {
     flex-direction: column;
@@ -341,5 +415,57 @@ p {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.15rem;
+  }
+}
+
+@media print {
+  header,
+  .resume-actions,
+  .nav-container,
+  .experience-cta {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  main {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .resume-page-header {
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1.5pt solid #000000;
+  }
+
+  .resume-section {
+    padding: 1rem 0;
+    border-bottom: 0.5pt solid #cccccc;
+    break-inside: avoid;
+  }
+
+  .resume-item {
+    margin-bottom: 1rem;
+    break-inside: avoid;
+  }
+
+  .resume-bullets li {
+    margin-bottom: 0.25rem;
+  }
+
+  .resume-date {
+    color: #333333;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
   }
 }
