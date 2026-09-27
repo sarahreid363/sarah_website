@@ -67,6 +67,32 @@
     <!-- Additional Projects Cards Grid -->
     <section class="projects-grid-section" aria-label="Additional Projects">
       <div class="projects-grid">
+        <!-- Project: Breach Project -->
+        <article class="project-card project-card-wide">
+          <div class="project-card-body">
+            <h3 class="project-card-title">Breach Project: Risk Assessment of the Medical Sector <span class="project-card-course">(Team Project)</span></h3>
+            <p class="project-card-desc">Our team conducted a cybersecurity risk assessment of the healthcare sector using the NIST SP 800-30 risk assessment framework and U.S. Department of Health and Human Services breach data from 2010–2022. Reported breaches rose from 199 in 2010 to 719 in 2022, and hacking/IT incidents were by far the most common threat source, followed by unauthorized access/disclosure and theft. The most frequently targeted locations were desktop computers, email, network servers, and electronic medical records. We studied three major 2024 incidents (the Change Healthcare attack, the Kaiser Foundation Health Plan breach, and the Ascension Health breach) and recommended three controls: employee security awareness training, two-step authentication, and firewalls and network security to protect sensitive data.</p>
+            <div class="project-charts">
+              <div class="chart-box">
+                <canvas id="breachYearChart" role="img" aria-label="Bar chart of reported healthcare breaches per year, rising from 199 in 2010 to 719 in 2022"></canvas>
+              </div>
+              <div class="chart-box">
+                <canvas id="breachTypeChart" role="img" aria-label="Horizontal bar chart of breaches by threat type from 2010 to 2022, led by hacking/IT incidents at 2,480"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="project-skills">
+            <span class="skills-label">Skills:</span>
+            <div class="tags-container">
+              <span class="skill-tag">NIST SP 800-30</span>
+              <span class="skill-tag">risk assessment</span>
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">IT controls</span>
+            </div>
+          </div>
+        </article>
+
         <!-- Project 2: Makers Market -->
         <article class="project-card">
           <div class="project-card-body">
@@ -126,6 +152,59 @@
       <p>&copy; 2026 Sarah Reid. All rights reserved.</p>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
+  <script>
+    if (window.Chart) {
+      new Chart(document.getElementById('breachYearChart'), {
+        type: 'bar',
+        data: {
+          labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+          datasets: [{
+            label: 'Reported breaches',
+            data: [199, 200, 218, 276, 314, 270, 324, 358, 369, 511, 662, 715, 719],
+            backgroundColor: '#BFA06A',
+            hoverBackgroundColor: '#D4BC8C',
+            borderRadius: 3
+          }]
+        },
+        options: {
+          plugins: {
+            title: { display: true, text: 'Reported Breaches per Year' },
+            legend: { display: false }
+          },
+          scales: {
+            y: { beginAtZero: true },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      new Chart(document.getElementById('breachTypeChart'), {
+        type: 'bar',
+        data: {
+          labels: [['Hacking/IT', 'Incident'], ['Unauthorized', 'Access/Disclosure'], 'Theft', 'Loss', ['Improper', 'Disposal'], 'Other', 'Unknown'],
+          datasets: [{
+            label: 'Breaches',
+            data: [2480, 1280, 980, 210, 110, 80, 10],
+            backgroundColor: '#BFA06A',
+            hoverBackgroundColor: '#D4BC8C',
+            borderRadius: 3
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            title: { display: true, text: 'Breaches by Threat Type, 2010–2022' },
+            legend: { display: false }
+          },
+          scales: {
+            x: { beginAtZero: true },
+            y: { grid: { display: false }, ticks: { autoSkip: false, font: { size: 11 } } }
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>
