@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Sarah Reid - Capstone business plan, e-commerce operations reporting, utility rate analysis, and portfolio website development.">
   <title>Projects | Sarah Reid</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,7 +17,7 @@
           <li><a href="index.html#skills">Skills</a></li>
           <li><a href="index.html#experience">Experience</a></li>
           <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="project.html">Projects</a></li>
+          <li><a href="project.html" class="active" aria-current="page">Projects</a></li>
           <li><a href="resume.html">Resume</a></li>
         </ul>
       </div>
@@ -24,8 +25,96 @@
   </header>
 
   <main>
-    <section class="section">
+    <div class="projects-page-header">
       <h1>Projects</h1>
+    </div>
+
+    <!-- Featured Project: Capstone Project -->
+    <section class="featured-project-section" aria-labelledby="featured-project-title">
+      <div class="featured-project-badge">Featured Capstone</div>
+      <h2 id="featured-project-title" class="featured-project-title">Capstone Project: Professional Services Business Plan</h2>
+      
+      <div class="featured-project-content">
+        <div class="featured-project-block">
+          <h3>Overview</h3>
+          <p>For my capstone, I developed a full business plan for a professional services firm serving a growing, underserved client market. The plan brings together accounting, advisory, and financial planning expertise to address needs that clients typically have to piece together on their own.</p>
+        </div>
+
+        <div class="featured-project-block">
+          <h3>My Role</h3>
+          <p>I built the plan from the ground up, from identifying the market opportunity and defining the firm's services to thinking through pricing, operations, and how the firm would earn client trust. The idea was shaped by what I've seen in my internships working directly with tax and advisory clients.</p>
+        </div>
+
+        <div class="featured-project-block">
+          <h3>What I Learned</h3>
+          <p>The project taught me how to turn a real client need into a structured business model, and how much planning goes into making a professional service clear, credible, and valuable to the people it's meant for.</p>
+        </div>
+      </div>
+
+      <div class="project-skills">
+        <span class="skills-label">Skills:</span>
+        <div class="tags-container">
+          <span class="skill-tag">business planning</span>
+          <span class="skill-tag">market analysis</span>
+          <span class="skill-tag">advisory services</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Projects Cards Grid -->
+    <section class="projects-grid-section" aria-label="Additional Projects">
+      <div class="projects-grid">
+        <!-- Project 2: Makers Market -->
+        <article class="project-card">
+          <div class="project-card-body">
+            <h3 class="project-card-title">Makers Market: E-Commerce &amp; Operations Reporting</h3>
+            <p class="project-card-desc">Makers Market is a multi-location retailer featuring products from independent makers. As Operations Coordinator, I manage the company's online storefront, the public-facing side of the business for customers shopping online. I keep product listings, descriptions, pricing, and online inventory accurate and in sync with five physical store locations, and I coordinate with makers on product submissions and onboarding so new items are ready to go live. Behind the scenes, I build weekly Excel reports on sales, inventory, and cycle counts that support pricing, purchasing, and forecasting decisions.</p>
+          </div>
+          <div class="project-skills">
+            <span class="skills-label">Skills:</span>
+            <div class="tags-container">
+              <span class="skill-tag">e-commerce management</span>
+              <span class="skill-tag">inventory control</span>
+              <span class="skill-tag">Excel reporting</span>
+              <span class="skill-tag">vendor coordination</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Utility Rate Analysis -->
+        <article class="project-card">
+          <div class="project-card-body">
+            <h3 class="project-card-title">Utility Rate Analysis</h3>
+            <p class="project-card-desc">During my risk advisory internship, I analyzed multi-year rate data for a utility client and built visual summaries to help communicate trends and support the engagement team's recommendations.</p>
+          </div>
+          <div class="project-skills">
+            <span class="skills-label">Skills:</span>
+            <div class="tags-container">
+              <span class="skill-tag">data analysis</span>
+              <span class="skill-tag">data visualization</span>
+              <span class="skill-tag">Excel</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Personal Portfolio Website -->
+        <article class="project-card">
+          <div class="project-card-body">
+            <h3 class="project-card-title">Personal Portfolio Website <span class="project-card-course">(ISDS 4125: Analysis and Design of Information Systems)</span></h3>
+            <p class="project-card-desc">I built this website as a vibe coding project, directing Google's Antigravity AI agent to write the HTML and CSS while I reviewed, tested, and refined every change. I managed the project with Git version control, pushing updates to GitHub throughout development, and published it live using GitHub Pages. Along the way I worked through real technical problems, from setting up the project workspace to configuring GitHub authentication and hosting, and learned to guide an AI agent the way I'd direct a teammate: with clear requirements, careful review, and questions whenever something didn't make sense.</p>
+          </div>
+          <div class="project-skills">
+            <span class="skills-label">Skills:</span>
+            <div class="tags-container">
+              <span class="skill-tag">AI-assisted development</span>
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub Pages</span>
+              <span class="skill-tag">responsive design</span>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 </body>
