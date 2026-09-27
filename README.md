@@ -1,6 +1,6 @@
 # Sarah Reid – Personal Portfolio Website
 
-A personal portfolio website built for ISDS 4125: Analysis and Design of Information Systems at LSU. The site uses a hybrid layout: a single-page homepage with my profile, skills, experience, and contact information, plus separate resume and projects pages. I built it by directing Google's Antigravity AI agent, managed it with Git version control, and published it with GitHub Pages. After reaching my Antigravity usage limit, I finished the final features using Claude Code.
+A personal portfolio website built for ISDS 4125: Analysis and Design of Information Systems at LSU. The site uses a hybrid layout: a single-page homepage with my profile, skills, experience, and contact information, plus separate resume and projects pages. I built it by directing Google's Antigravity AI agent, managed it with Git version control, and published it with GitHub Pages.
 
 **Live site:** https://sarahreid363.github.io/sarah_website/
 
