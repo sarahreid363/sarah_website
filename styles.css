@@ -863,6 +863,21 @@ a:hover {
   color: var(--text-main);
 }
 
+/* Project categories */
+.project-category-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gold-accent);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.project-category .projects-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 /* Wide project cards with charts */
 .project-card-wide {
   grid-column: 1 / -1;
@@ -946,6 +961,10 @@ a:hover {
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 860px) {
+  .project-category .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
   .academics-layout,
   .project-charts,
   .stat-callouts {
