@@ -2,6 +2,71 @@
    Shared site scripts
    ========================================================================== */
 
+/* Sticky header offset
+   Measures the header's real height (it wraps to two rows on phones) and uses it
+   for scroll-padding-top so anchored sections land just below the header. */
+(function () {
+  var header = document.querySelector('header');
+  if (!header) return;
+  var root = document.documentElement;
+
+  function updateOffset() {
+    root.style.scrollPaddingTop = (header.offsetHeight + 16) + 'px';
+  }
+
+  updateOffset();
+  window.addEventListener('resize', updateOffset);
+  window.addEventListener('load', function () {
+    updateOffset();
+    // Re-align a section linked from another page now that the offset is correct
+    var target = location.hash && document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView();
+  });
+  if ('ResizeObserver' in window) new ResizeObserver(updateOffset).observe(header);
+})();
+
+/* Active nav link
+   On the homepage, underlines the nav link for the section currently in view. */
+(function () {
+  var links = Array.prototype.filter.call(document.querySelectorAll('.nav-links a'), function (a) {
+    var hash = a.getAttribute('href').split('#')[1];
+    return hash && document.getElementById(hash);
+  });
+  if (!links.length) return;
+
+  var header = document.querySelector('header');
+  var sections = links.map(function (a) {
+    return document.getElementById(a.getAttribute('href').split('#')[1]);
+  });
+
+  function setActive() {
+    var threshold = (header ? header.offsetHeight : 0) + 40;
+    var current = 0;
+    sections.forEach(function (section, i) {
+      if (section.getBoundingClientRect().top <= threshold) current = i;
+    });
+    // At the bottom of the page, the last section may be too short to reach the top
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      current = sections.length - 1;
+    }
+    links.forEach(function (a, i) {
+      a.classList.toggle('active', i === current);
+      if (i === current) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { setActive(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', setActive);
+  window.addEventListener('load', setActive);
+  setActive();
+})();
+
 /* Animated counters
    Any element with data-count-to counts up when scrolled into view.
    Optional: data-count-from, data-decimals, data-prefix, data-suffix, data-duration (ms). */
