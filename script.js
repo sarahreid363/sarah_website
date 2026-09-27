@@ -28,9 +28,12 @@
 /* Active nav link
    On the homepage, underlines the nav link for the section currently in view. */
 (function () {
+  function pagePath(path) { return path.replace(/index\.html$/, ''); }
+
+  // Only links to sections on this page (resume.html has its own #experience, for example)
   var links = Array.prototype.filter.call(document.querySelectorAll('.nav-links a'), function (a) {
     var hash = a.getAttribute('href').split('#')[1];
-    return hash && document.getElementById(hash);
+    return hash && pagePath(a.pathname) === pagePath(location.pathname) && document.getElementById(hash);
   });
   if (!links.length) return;
 
