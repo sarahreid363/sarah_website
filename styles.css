@@ -1,15 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap');
+
+/* ==========================================================================
+   Design System Variables
+   ========================================================================== */
 :root {
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --bg-color: #fcfcfc;
-  --text-color: #1a1a1a;
-  --nav-bg: rgba(255, 255, 255, 0.9);
-  --nav-border: #e5e5e5;
-  --link-color: #333333;
-  --link-hover-color: #0066cc;
-  --nav-height: 64px;
-  --container-width: 960px;
+  /* Typography */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Palette */
+  --bg-color: #0E0E0E;                        /* Deep near-black page canvas */
+  --bg-card: #161616;                         /* Subtle raised surface */
+  --border-card: rgba(191, 160, 106, 0.25);   /* Thin 1px champagne gold border */
+  --border-card-hover: rgba(191, 160, 106, 0.55); /* Subtle brightening on hover */
+
+  /* Muted Champagne Gold */
+  --gold-accent: #BFA06A;
+  --gold-hover: #D4BC8C;
+  --gold-subtle-bg: rgba(191, 160, 106, 0.1);
+
+  /* Typography Colors */
+  --text-main: #EDEAE4;                       /* Warm off-white */
+  --text-secondary: #A8A39A;                  /* Refined secondary warm gray */
+
+  /* Layout */
+  --nav-height: 72px;
+  --container-width: 1100px;
 }
 
+/* ==========================================================================
+   Base & Resets
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,27 +40,38 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
+  background-color: var(--bg-color);
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  color: var(--text-main);
+  line-height: 1.7;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--nav-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--nav-border);
+  background-color: rgba(14, 14, 14, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-card);
 }
 
 .navbar {
-  height: var(--nav-height);
+  min-height: var(--nav-height);
   display: flex;
   align-items: center;
 }
@@ -48,113 +80,173 @@ header {
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .nav-logo {
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-weight: 600;
   font-size: 1.15rem;
   text-decoration: none;
-  color: var(--text-color);
-  letter-spacing: -0.01em;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.nav-logo:hover {
+  color: var(--gold-hover);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.75rem;
   align-items: center;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
-  transition: color 0.2s ease;
+  padding: 0.4rem 0.1rem;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--link-hover-color);
+.nav-links a:hover {
+  color: var(--gold-hover);
 }
 
 .nav-links a.active {
+  color: var(--gold-accent);
   font-weight: 600;
+  border-bottom-color: var(--gold-accent);
 }
 
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
 main {
+  width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 3rem 2rem 5rem;
+  flex: 1;
 }
 
+/* Generous spacing between section cards */
 .section {
-  padding: 4rem 0;
-  min-height: 40vh;
-  border-bottom: 1px solid #f0f0f0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 2.75rem 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: none;
+  transition: border-color 0.25s ease;
 }
 
 .section:last-of-type {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
+.section:hover {
+  border-color: var(--border-card-hover);
+}
+
+/* ==========================================================================
+   Headings & Typography
+   ========================================================================== */
 h1, h2, h3 {
+  font-family: var(--font-heading);
   font-weight: 600;
-  margin-bottom: 1rem;
+  line-height: 1.35;
 }
 
+/* Page titles in gold */
 h1 {
-  font-size: 2rem;
-  letter-spacing: -0.02em;
+  font-size: 2.1rem;
+  letter-spacing: -0.01em;
+  color: var(--gold-accent);
+  margin-bottom: 1.25rem;
 }
 
+/* Section headings */
 h2 {
-  font-size: 1.5rem;
-  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  border-bottom: none;
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
 }
 
 .profile-name {
-  font-size: 1.2rem;
-  color: var(--text-color);
-  margin-bottom: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: 0.01em;
+  margin-bottom: 1rem;
 }
 
 p {
   margin-bottom: 1rem;
-  color: #333333;
-  max-width: 75ch;
+  color: var(--text-main);
+  line-height: 1.7;
+  max-width: 80ch;
 }
 
+/* Lists */
 .section ul {
   padding-left: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
 .section li {
-  margin-bottom: 0.65rem;
-  color: #333333;
-  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.section li strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.section li::marker {
+  color: var(--gold-accent);
 }
 
 .section li:last-child {
   margin-bottom: 0;
 }
 
-.section a {
-  color: var(--link-hover-color);
+/* Links */
+a {
+  color: var(--gold-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
   word-break: break-word;
 }
 
-.section a:hover {
-  text-decoration: none;
-  opacity: 0.8;
+a:hover {
+  color: var(--gold-hover);
 }
 
 .contact-list {
@@ -163,54 +255,93 @@ p {
 }
 
 .contact-list li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
 }
 
+.contact-list li strong {
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  min-width: 90px;
+}
+
+.contact-list a {
+  color: var(--gold-accent);
+}
+
+/* ==========================================================================
+   Buttons (Gold outline; fill with gold and near-black text on hover)
+   ========================================================================== */
 .experience-cta {
-  margin-top: 1.75rem;
+  margin-top: 2rem;
 }
 
-.btn {
+.btn,
+.btn-outline {
   display: inline-block;
-  padding: 0.65rem 1.25rem;
-  background-color: var(--text-color);
-  color: #ffffff !important;
-  text-decoration: none !important;
-  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  background-color: transparent;
+  color: var(--gold-accent) !important;
+  border: 1px solid var(--gold-accent);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
   font-weight: 500;
-  border-radius: 6px;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  box-shadow: none;
 }
 
-.btn:hover {
-  background-color: var(--link-hover-color);
-  color: #ffffff !important;
-  text-decoration: none !important;
+.btn:hover,
+.btn-outline:hover {
+  background-color: var(--gold-accent);
+  color: #0E0E0E !important;
+  border-color: var(--gold-accent);
   transform: translateY(-1px);
 }
 
-.btn:active {
+.btn:active,
+.btn-outline:active {
   transform: translateY(0);
 }
 
-/* Resume Specific Styles */
+/* ==========================================================================
+   Resume Page Styles
+   ========================================================================== */
 .resume-page-header {
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--text-color);
-  margin-bottom: 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: border-color 0.25s ease;
+}
+
+.resume-page-header:hover {
+  border-color: var(--border-card-hover);
 }
 
 .resume-header-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .resume-name-title {
-  font-size: 1.15rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--text-main);
+  letter-spacing: 0.01em;
   margin-bottom: 0.25rem;
 }
 
@@ -218,58 +349,53 @@ p {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-size: 0.95rem;
-  color: #555555;
-  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
 }
 
 .resume-contact-bar a {
-  color: var(--link-hover-color);
+  color: var(--text-main);
   text-decoration: none;
 }
 
 .resume-contact-bar a:hover {
+  color: var(--gold-hover);
   text-decoration: underline;
 }
 
 .resume-contact-bar .separator {
-  color: #888888;
-}
-
-.btn-outline {
-  display: inline-block;
-  padding: 0.45rem 0.9rem;
-  background-color: transparent;
-  color: var(--text-color);
-  border: 1px solid #cccccc;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-outline:hover {
-  background-color: #f0f0f0;
-  border-color: #999999;
+  color: var(--gold-accent);
 }
 
 .resume-section {
-  padding: 2.25rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 2.75rem 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: border-color 0.25s ease;
+}
+
+.resume-section:hover {
+  border-color: var(--border-card-hover);
 }
 
 .resume-section:last-of-type {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .resume-item {
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(191, 160, 106, 0.12);
 }
 
 .resume-item:last-child {
   margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .resume-header {
@@ -286,27 +412,33 @@ p {
 }
 
 .resume-item-title {
-  font-size: 1.15rem;
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--text-main);
+  letter-spacing: 0.01em;
   margin-bottom: 0.2rem;
 }
 
 .resume-promotion {
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 400;
-  color: #666666;
+  color: var(--text-secondary);
 }
 
 .resume-subtitle {
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  color: #555555;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .resume-date {
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  color: #666666;
+  color: var(--gold-accent);
+  font-weight: 500;
   white-space: nowrap;
   text-align: right;
   flex-shrink: 0;
@@ -314,24 +446,28 @@ p {
 }
 
 .resume-details {
-  margin-top: 0.35rem;
+  margin-top: 0.45rem;
 }
 
 .resume-details p {
-  margin-bottom: 0.3rem;
-  color: #444444;
+  margin-bottom: 0.35rem;
+  color: var(--text-main);
 }
 
 .resume-bullets {
   padding-left: 1.25rem;
-  margin-top: 0.6rem;
+  margin-top: 0.75rem;
   margin-bottom: 0;
 }
 
 .resume-bullets li {
-  margin-bottom: 0.5rem;
-  color: #333333;
-  line-height: 1.6;
+  margin-bottom: 0.6rem;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.resume-bullets li::marker {
+  color: var(--gold-accent);
 }
 
 .resume-bullets li:last-child {
@@ -344,9 +480,13 @@ p {
 }
 
 .resume-entry-list li {
-  margin-bottom: 0.65rem;
-  color: #333333;
-  line-height: 1.6;
+  margin-bottom: 0.85rem;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.resume-entry-list li::marker {
+  color: var(--gold-accent);
 }
 
 .resume-entry-list li:last-child {
@@ -362,164 +502,209 @@ p {
 }
 
 .resume-entry-title {
-  color: #333333;
+  color: var(--text-main);
   flex: 1;
 }
 
-/* Projects Specific Styles */
+/* ==========================================================================
+   Projects Page Styles
+   ========================================================================== */
 .projects-page-header {
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--text-color);
-  margin-bottom: 2rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: border-color 0.25s ease;
 }
 
+.projects-page-header:hover {
+  border-color: var(--border-card-hover);
+}
+
+/* Featured Capstone (Raised #161616 Section) */
 .featured-project-section {
-  background-color: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
-  padding: 2.25rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 2.75rem 2.5rem;
+  margin-bottom: 3.5rem;
+  box-shadow: none;
+  transition: border-color 0.25s ease;
 }
 
+.featured-project-section:hover {
+  border-color: var(--border-card-hover);
+}
+
+/* Small section label on its own line above title: uppercase, letter-spacing 0.15em, small, gold */
 .featured-project-badge {
-  display: inline-block;
+  display: block;
+  font-family: var(--font-heading);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--link-hover-color);
-  background-color: #eef5fc;
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
-  margin-bottom: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-accent);
+  margin-bottom: 0.75rem;
 }
 
+/* Project title: Montserrat semibold, no underline */
 .featured-project-title {
-  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
   font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
   line-height: 1.35;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .featured-project-content {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .featured-project-block h3 {
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--gold-accent);
   margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
 }
 
 .featured-project-block p {
-  color: #333333;
-  line-height: 1.65;
+  color: var(--text-main);
+  line-height: 1.7;
   margin-bottom: 0;
   max-width: 100%;
 }
 
+/* Skills Line & Tags */
 .project-skills {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid #f0f0f0;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(191, 160, 106, 0.15);
 }
 
+/* Small label for SKILLS */
 .skills-label {
-  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #555555;
-  margin-right: 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-accent);
+  margin-right: 0.35rem;
 }
 
 .tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.45rem;
   align-items: center;
 }
 
 .skill-tag {
   display: inline-flex;
   align-items: center;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
-  color: #333333;
-  background-color: #f2f3f5;
-  border: 1px solid #e2e4e8;
-  padding: 0.2rem 0.65rem;
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(191, 160, 106, 0.22);
+  padding: 0.22rem 0.7rem;
   border-radius: 9999px;
   line-height: 1.4;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .skill-tag:hover {
-  background-color: #e5e7eb;
-  border-color: #d1d5db;
+  background-color: rgba(191, 160, 106, 0.12);
+  border-color: var(--gold-accent);
+  color: var(--gold-hover);
 }
 
+/* Projects Cards Grid */
 .projects-grid-section {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.projects-grid-heading {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.75rem;
+  border-bottom: none;
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.75rem;
   align-items: stretch;
 }
 
 .project-card {
-  background-color: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  padding: 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 1.75rem 1.6rem 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: none;
+  transition: border-color 0.25s ease, transform 0.2s ease;
 }
 
 .project-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  border-color: #d0d0d0;
+  border-color: var(--border-card-hover);
 }
 
 .project-card-body {
   flex: 1;
 }
 
+/* Remove underline under project titles */
 .project-card-title {
+  font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 0.75rem;
-  line-height: 1.35;
+  color: var(--text-main);
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+  text-decoration: none;
+  border-bottom: none;
+  letter-spacing: 0.01em;
 }
 
 .project-card-course {
   display: block;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 400;
-  color: #666666;
-  margin-top: 0.25rem;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
 }
 
 .project-card-desc {
-  color: #444444;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   max-width: 100%;
 }
 
@@ -527,57 +712,98 @@ p {
   margin-top: auto;
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-color);
+  border-top: 1px solid var(--border-card);
+  padding: 3.5rem 2rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.footer-container p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
 @media (max-width: 860px) {
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.75rem;
   }
 }
 
 @media (max-width: 640px) {
+  :root {
+    --nav-height: 84px;
+  }
+
   .nav-container {
     flex-direction: column;
     height: auto;
-    padding: 0.75rem 1rem;
-    gap: 0.5rem;
-  }
-
-  .navbar {
-    height: auto;
-  }
-
-  :root {
-    --nav-height: 90px;
+    padding: 0.85rem 1.25rem;
+    gap: 0.75rem;
   }
 
   .nav-links {
-    gap: 1rem;
+    gap: 0.85rem;
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  main {
+    padding: 2rem 1.25rem 3.5rem;
+  }
+
+  .section,
+  .resume-section,
+  .resume-page-header,
+  .projects-page-header,
   .featured-project-section {
-    padding: 1.5rem 1.25rem;
-    margin-bottom: 2rem;
+    padding: 1.75rem 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
   }
 
   .featured-project-title {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     margin-bottom: 1.25rem;
   }
 
   .project-card {
-    padding: 1.25rem;
+    padding: 1.4rem 1.25rem;
   }
 
   .resume-header-top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .resume-contact-bar {
-    gap: 0.35rem;
+    gap: 0.4rem;
     font-size: 0.88rem;
   }
 
@@ -600,8 +826,13 @@ p {
   }
 }
 
+/* ==========================================================================
+   Print Optimization
+   ========================================================================== */
 @media print {
   header,
+  footer,
+  .site-footer,
   .resume-actions,
   .nav-container,
   .experience-cta {
@@ -623,27 +854,41 @@ p {
 
   .resume-page-header,
   .projects-page-header {
-    padding-bottom: 0.75rem;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 0.75rem 0;
     margin-bottom: 0.75rem;
-    border-bottom: 1.5pt solid #000000;
+    border-bottom: 1.5pt solid #000000 !important;
   }
 
+  .section,
   .resume-section,
   .featured-project-section,
   .project-card {
+    background: transparent !important;
+    color: #000000 !important;
+    border: none !important;
+    border-bottom: 0.5pt solid #cccccc !important;
+    border-radius: 0;
     padding: 1rem 0;
-    border-bottom: 0.5pt solid #cccccc;
+    margin-bottom: 1.5rem;
     break-inside: avoid;
     box-shadow: none !important;
   }
 
-  .featured-project-section,
-  .project-card {
-    border: none;
-    border-bottom: 0.5pt solid #cccccc;
-    border-radius: 0;
-    padding: 1rem 0;
-    margin-bottom: 1.5rem;
+  h1, h2, h3,
+  .featured-project-title,
+  .resume-item-title,
+  .project-card-title {
+    color: #000000 !important;
+  }
+
+  p,
+  .resume-bullets li,
+  .resume-entry-list li,
+  .featured-project-block p,
+  .project-card-desc {
+    color: #333333 !important;
   }
 
   .projects-grid {
@@ -652,6 +897,8 @@ p {
 
   .resume-item {
     margin-bottom: 1rem;
+    padding-bottom: 0;
+    border-bottom: none;
     break-inside: avoid;
   }
 
@@ -660,12 +907,13 @@ p {
   }
 
   .resume-date {
-    color: #333333;
+    color: #333333 !important;
   }
 
   .skill-tag {
-    border: 0.5pt solid #888888;
-    background: transparent;
+    border: 0.5pt solid #888888 !important;
+    background: transparent !important;
+    color: #000000 !important;
   }
 
   a {
