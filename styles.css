@@ -863,6 +863,41 @@ a:hover {
   color: var(--text-main);
 }
 
+/* Projects page intro and section pills */
+.page-intro {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: -0.5rem;
+  margin-bottom: 0;
+}
+
+.section-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.pill-link {
+  display: inline-block;
+  padding: 0.35rem 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold-accent);
+  text-decoration: none;
+  border: 1px solid var(--gold-accent);
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pill-link:hover,
+.pill-link:focus-visible {
+  background-color: var(--gold-accent);
+  color: var(--bg-color);
+}
+
 /* Project categories */
 .project-category-label {
   font-size: 0.8rem;
