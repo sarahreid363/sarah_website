@@ -734,6 +734,55 @@ a:hover {
   margin-top: auto;
 }
 
+/* Academic Highlights */
+.academics-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.gpa-ticker {
+  text-align: center;
+  padding: 1.1rem 1rem;
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+}
+
+.gpa-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.gpa-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--gold-accent);
+  margin: 0.35rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.gpa-caption {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin: 0 auto;
+}
+
+.chart-box {
+  position: relative;
+  height: 300px;
+  min-width: 0;
+}
+
 /* Honors & Affiliations */
 .honors-grid {
   display: grid;
@@ -843,6 +892,10 @@ a:hover {
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 860px) {
+  .academics-layout {
+    grid-template-columns: 1fr;
+  }
+
   .honors-grid {
     grid-template-columns: 1fr;
   }
@@ -910,6 +963,14 @@ a:hover {
 
   .profile-headshot {
     width: 180px;
+  }
+
+  .gpa-number {
+    font-size: 2.6rem;
+  }
+
+  .chart-box {
+    height: 260px;
   }
 
   .honor-card-featured {

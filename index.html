@@ -39,6 +39,20 @@
       </div>
     </section>
 
+    <section id="academics" class="section">
+      <h2>Academic Highlights</h2>
+      <div class="academics-layout">
+        <div class="gpa-ticker">
+          <span class="gpa-label">Cumulative GPA</span>
+          <span class="gpa-number" data-count-to="3.62" data-count-from="3.26" data-decimals="2" data-duration="2000">3.62</span>
+          <p class="gpa-caption">Grew from 3.26 to 3.62 at LSU.</p>
+        </div>
+        <div class="chart-box">
+          <canvas id="gpaChart" role="img" aria-label="Line chart of GPA growth by semester, rising from 3.26 in Fall 2022 to 3.62 in Summer 2026"></canvas>
+        </div>
+      </div>
+    </section>
+
     <section id="skills" class="section">
       <h2>Skills</h2>
       <ul class="skills-list">
@@ -102,5 +116,39 @@
       <p>&copy; 2026 Sarah Reid. All rights reserved.</p>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script>
+    if (window.Chart) {
+      new Chart(document.getElementById('gpaChart'), {
+        type: 'line',
+        data: {
+          labels: ['Fall 2022', 'Spring 2023', 'Fall 2023', 'Spring 2024', 'Fall 2024', 'Spring 2025', 'Summer 2025', 'Fall 2025', 'Spring 2026', 'Summer 2026'],
+          datasets: [{
+            label: 'GPA',
+            data: [3.26, 3.28, 3.34, 3.46, 3.46, 3.50, 3.53, 3.54, 3.58, 3.62],
+            borderColor: '#BFA06A',
+            backgroundColor: '#BFA06A',
+            pointBackgroundColor: '#BFA06A',
+            pointHoverBackgroundColor: '#D4BC8C',
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            borderWidth: 2,
+            tension: 0.3
+          }]
+        },
+        options: {
+          plugins: {
+            title: { display: true, text: 'GPA Growth by Semester' },
+            legend: { display: false }
+          },
+          scales: {
+            y: { min: 3.2, max: 3.7, ticks: { stepSize: 0.1 } },
+            x: { ticks: { maxRotation: 45, autoSkip: true } }
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>
